@@ -1,0 +1,10 @@
+import java.io.File;
+
+import javax.sound.sampled.*;
+import javax.swing.*;
+
+
+public class getSamples {
+	final JFileChooser fileChooser = new JFileChooser();
+	AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("/a.txt"));
+}

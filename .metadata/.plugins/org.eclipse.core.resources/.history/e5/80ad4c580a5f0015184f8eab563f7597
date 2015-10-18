@@ -1,0 +1,54 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+
+import javax.sound.sampled.*;
+import javax.swing.*;
+import javax.swing.filechooser.*;
+
+
+public class getSamples extends JPanel implements ActionListener{
+	static private final String newline = "\n";
+	JButton open, save;
+	JTextArea log;
+	JFileChooser fc;
+	public getSamples() {
+		fc = new JFileChooser();
+		open = new JButton("open a song ...");
+		open.addActionListener(this);
+		System.out.println(AudioSystem.getAudioFileTypes());
+	}
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == open) {
+			int returnVal = fc.showOpenDialog(getSamples.this);
+			
+			if(returnVal == JFileChooser.APPROVE_OPTION){
+				File file = fc.getSelectedFile();
+				try {
+					AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
+					AudioInputStream rawInputStream = null;
+					if (audioInputStream != null){
+						AudioFormat format = audioInputStream.getFormat();
+						AudioFormat decoded = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, format.getSampleRate(),16,format.getChannels(),format.getChannels()*2,format.getSampleRate(),false);
+						rawInputStream = AudioSystem.getAudioInputStream(decoded, audioInputStream);
+						DataLine.Info info = new DataLine.Info(Clip.class, format,AudioSystem.NOT_SPECIFIED);
+						int SampleSize = format.getSampleSizeInBits();
+						byte[] soundValues = null;
+						rawInputStream.read(soundValues, 0, 16);
+						for(int i=0;i<16;i++){
+							System.out.println(soundValues[i]);
+						}
+						
+					}
+				} catch (UnsupportedAudioFileException | IOException e1) {
+					System.out.println("please use supported audio types");
+					e1.printStackTrace();
+				}
+				
+			}
+		}
+		
+	}
+	
+}

@@ -1,0 +1,46 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+
+import javax.media.Manager;
+import javax.media.protocol.DataSource;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+
+public class getSamples extends JPanel implements ActionListener{
+	static private final String newline = "\n";
+	JButton open, save;
+	JTextArea log;
+	JFileChooser fc;
+	public getSamples() {
+		fc = new JFileChooser();
+		open = new JButton("open a song ...");
+		open.addActionListener(this);
+	}
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == open) {
+			int returnVal = fc.showOpenDialog(getSamples.this);
+			
+			if(returnVal == JFileChooser.APPROVE_OPTION){
+				File file = fc.getSelectedFile();
+				try {
+					File f = new File("D:/GaduationProject/test.mp3");
+					DataSource ds = Manager.createDataSource(f.toURI().toURL());
+					ds.connect();
+					ds.start();
+					System.out.print(ds.getControls());
+					
+				} catch (Exception e1) {
+					System.out.println("please use supported audio types");
+					e1.printStackTrace();
+				}
+				
+			}
+		}
+		
+	}
+	
+}

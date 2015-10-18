@@ -1,0 +1,10 @@
+
+public class Sequencing {
+
+	public static void main(String[] args) {
+		getSamples getSamples = new getSamples();
+		getSamples.running();
+
+	}
+
+}
