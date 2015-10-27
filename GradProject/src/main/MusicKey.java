@@ -1,3 +1,5 @@
+package main;
+
 
 public class MusicKey {
 	private Tonality Tonality;
@@ -132,7 +134,7 @@ public class MusicKey {
 	
 	public Mode getSupertonicMode(){
 		if(getMode() == Mode.MAJOR){
-			reutrn Mode.MINOR;
+			return Mode.MINOR;
 		} else {
 			return Mode.NOTMODE;
 		}
@@ -142,7 +144,7 @@ public class MusicKey {
 		if(getMode() == Mode.MAJOR){
 			return Mode.MINOR;
 		} else {
-			reutrn Mode.MAJOR;
+			return Mode.MAJOR;
 		}
 	}
 	
@@ -150,7 +152,7 @@ public class MusicKey {
 		if(getMode() == Mode.MAJOR){
 			return Mode.MAJOR;
 		} else{
-			Mode.MINOR;
+			return Mode.MINOR;
 		}
 	}
 	
@@ -166,7 +168,7 @@ public class MusicKey {
 		if(getMode() == Mode.MAJOR){
 			return Mode.MINOR;
 		} else {
-			return mode.MAJOR;
+			return Mode.MAJOR;
 		}
 	}
 	

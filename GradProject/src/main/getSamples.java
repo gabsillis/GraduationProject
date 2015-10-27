@@ -1,3 +1,5 @@
+package main;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -9,13 +11,16 @@ import javax.swing.*;
 import javax.swing.filechooser.*;
 
 import org.jtransforms.dct.*;
+import org.jtransforms.dht.DoubleDHT_1D;
+import org.jtransforms.fft.DoubleFFT_1D;
+import org.jtransforms.fft.DoubleFFT_2D;
 
 
 
 
 public class getSamples extends JPanel implements ActionListener{
 	static private final String newline = "\n";
-	static private final int FOURIER_ARRAY_LENGTH = 16;
+	static private final int FOURIER_ARRAY_LENGTH = 1024;
 	
 	JButton open, save;
 	JTextArea log;
@@ -47,15 +52,15 @@ public class getSamples extends JPanel implements ActionListener{
 				File file = fc.getSelectedFile();
 				try {
 					AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
-					int frameLength = (int) audioInputStream.getFrameLength();
+					int frameLength =  (int) audioInputStream.getFrameLength();
 					int frameSize = (int) audioInputStream.getFormat().getFrameSize();
 					byte[] eightBitByteArray = new byte[frameLength * frameSize];
 					int result = audioInputStream.read(eightBitByteArray);
 					int channels = audioInputStream.getFormat().getChannels();
-					int[][] samples = new int[channels][frameLength];
-					DoubleDCT_1D DFTransformer = new DoubleDCT_1D(FOURIER_ARRAY_LENGTH);
+					double[][] samples = new double[channels][frameLength];
 					
-					double[][] transformValues = new double[channels][(int) Math.floor(frameLength/FOURIER_ARRAY_LENGTH)];
+					double[][] transformValues = new double[channels][(int) frameLength];
+					DoubleFFT_1D FFTransformer = new DoubleFFT_1D(3000);
 					
 					int sampleIndex = 0;
 					for(int t=0; t < eightBitByteArray.length;) {
@@ -65,21 +70,28 @@ public class getSamples extends JPanel implements ActionListener{
 							int high = (int) eightBitByteArray[t];
 							t++;
 							int sample = getSixteenBitSample(high,low);
-							samples[channel][sampleIndex] = sample;
+							samples[channel][sampleIndex] = (double) sample;
+							
+							//System.out.print(samples[channel][sampleIndex] + newline);
 						}
 						sampleIndex++;
 					}
-					for (int i = 0; i<samples.length; i++){
-						for (int j=0; j<transformValues[i].length;j++){
-							double[] a = new double[FOURIER_ARRAY_LENGTH];
-							for(int k=0;k<FOURIER_ARRAY_LENGTH;k++){
-								a[k] = (double) samples[i][4*j+k];
+					for (int i = 0; i<channels; i++){
+				    // loop through Channels
+							double[] fft = new double[3000*2];
+							System.arraycopy(samples[i], 100000, fft, 0, 3000);
+							for(int j = 0; j<1;j++){
+							FFTransformer.complexForward(fft);
 							}
-							DFTransformer.forward(a, false);
-							for(int k=0;k<FOURIER_ARRAY_LENGTH;k++){
-								System.out.println(a[k]);
-							}
+						int counter = 0;
+						for(double d: fft){
+							System.out.println(d);
+							transformValues[i][counter] = d;
+							counter++;
 						}
+							
+						System.out.println("end Channel");
+						System.out.println(frameLength);
 					}
 				} catch (UnsupportedAudioFileException | IOException e1) {
 					System.out.println("please use supported audio types");
