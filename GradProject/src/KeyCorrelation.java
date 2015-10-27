@@ -1,8 +1,10 @@
 
 public class KeyCorrelation {
-	public double getCorrelation(MusicKey key1, MusicKey key2){
+	public double getCorrelation(MusicKey key1, Tonality Tonality_key1, MusicKey key2, Tonality_key2){
+		key1.setTonality(Tonality_key1);
+		key2.setTonality(Tonality_key2);
 		
-		return 0;
+		
 	}
 
 }
