@@ -22,8 +22,9 @@ public class MusicKey {
 	public enum Mode{
 		MAJOR,
 		MINOR,
+		NOTMODE, //for translating scale degree chords to modes when it is a diminished or augmented chord
 		// This contains the two most common modes, further development could include many other modes such as
-		//Ionian, Aeolian, Dorian, Locrian, PHrygian, Lydian, and Mixolydian also melodic, harmonic, and natural minors.
+		//Ionian, Aeolian, Dorian, Locrian, Phrygian, Lydian, and Mixolydian also melodic, harmonic, and natural minors.
 	}
 	
 	public enum Tonality{
@@ -126,6 +127,54 @@ public class MusicKey {
 			return doubleToTonality(getTonality().baseDegree +5.5);
 		} else{
 			return doubleToTonality(getTonality().baseDegree +5.5);
+		}
+	}
+	
+	public Mode getSupertonicMode(){
+		if(getMode() == Mode.MAJOR){
+			reutrn Mode.MINOR;
+		} else {
+			return Mode.NOTMODE;
+		}
+	}
+	
+	public Mode getMediantMode(){
+		if(getMode() == Mode.MAJOR){
+			return Mode.MINOR;
+		} else {
+			reutrn Mode.MAJOR;
+		}
+	}
+	
+	public Mode getSubdominantMode(){
+		if(getMode() == Mode.MAJOR){
+			return Mode.MAJOR;
+		} else{
+			Mode.MINOR;
+		}
+	}
+	
+	public Mode getDominantMode(){
+		if(getMode() == Mode.MAJOR){
+			return Mode.MAJOR;
+		} else {
+			return Mode.MINOR; // This one will need to be handled as a special case because the Major V uses a leading tone which provides a stronger dominant
+		}
+	}
+	
+	public Mode getSubmediantMode(){
+		if(getMode() == Mode.MAJOR){
+			return Mode.MINOR;
+		} else {
+			return mode.MAJOR;
+		}
+	}
+	
+	public Mode getLeadingToneMode(){
+		if(getMode() == Mode.MAJOR){
+			return Mode.NOTMODE;
+		} else {
+			return Mode.MAJOR;
 		}
 	}
 }
