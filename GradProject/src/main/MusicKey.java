@@ -43,15 +43,18 @@ public class MusicKey {
 		FSHARP(5.5),
 		G(6.0);
 		
-		private final Double baseDegree; // to set a base numerical degree for each note
+		final Double baseDegree; // to set a base numerical degree for each note
 		Tonality(Double baseDegree){
 			this.baseDegree = baseDegree;
 		}
 	}
 	
 	
+	public int TonalityToInt(Double input){
+		return (int) (input*2);
+	}
 
-	public Tonality doubleToTonality(Double input){
+	Tonality doubleToTonality(Double input){
 		input = input%7; // modulus with 7
 		if(input == 0.5){
 			return Tonality.GSHARP;
