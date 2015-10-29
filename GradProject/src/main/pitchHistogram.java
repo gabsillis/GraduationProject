@@ -4,7 +4,11 @@ import main.MusicKey.Mode;
 import main.MusicKey.Tonality;
 
 public class pitchHistogram {
-	final static double[] HISTOGRAMVALUES = new double[12];
+	private static double[] HISTOGRAMVALUES = new double[12];
+	public pitchHistogram(double[] HISTOGRAM_VALUES){
+		HISTOGRAMVALUES = HISTOGRAM_VALUES;
+	}
+
 	// starts at Gsharp
 	
 	
@@ -48,9 +52,10 @@ public class pitchHistogram {
 		 minorProfile(Double MinorWeighting){
 			 this.MinorWeighting = MinorWeighting;
 		 }
+	 }
 		 
 		 public double KrumhanslShmuckler(
-				 // note names gs = g sharp
+				 // note names gs = g sharp for input from histogram
 				 double gs,
 				 double a,
 				 double as,
@@ -291,5 +296,74 @@ public class pitchHistogram {
 		return top/bottom;
 		// boom: mind = blown
 		 }
+	 
+	 
+	 public Tonality bestMajorCorrelation(){
+		 Tonality highest = Tonality.GSHARP;
+		 Tonality[] allTonalities = {MusicKey.Tonality.GSHARP, MusicKey.Tonality.A,MusicKey.Tonality.ASHARP,MusicKey.Tonality.B,MusicKey.Tonality.C,MusicKey.Tonality.D,
+		                             MusicKey.Tonality.DSHARP, MusicKey.Tonality.E,MusicKey.Tonality.F,MusicKey.Tonality.FSHARP,MusicKey.Tonality.G};
+		 for(int i=1;i<12;i++){
+			 	if(
+			 			
+			 			KrumhanslShmuckler(HISTOGRAMVALUES[0],HISTOGRAMVALUES[1],HISTOGRAMVALUES[2],HISTOGRAMVALUES[3],HISTOGRAMVALUES[4],HISTOGRAMVALUES[5],HISTOGRAMVALUES[6],HISTOGRAMVALUES[7],HISTOGRAMVALUES[8],HISTOGRAMVALUES[9],HISTOGRAMVALUES[10],HISTOGRAMVALUES[11],allTonalities[i],Mode.MAJOR)
+			 			>
+			 			KrumhanslShmuckler(HISTOGRAMVALUES[0],HISTOGRAMVALUES[1],HISTOGRAMVALUES[2],HISTOGRAMVALUES[3],HISTOGRAMVALUES[4],HISTOGRAMVALUES[5],HISTOGRAMVALUES[6],HISTOGRAMVALUES[7],HISTOGRAMVALUES[8],HISTOGRAMVALUES[9],HISTOGRAMVALUES[10],HISTOGRAMVALUES[11],highest,Mode.MAJOR)	 			
+			 			)
+			 	{
+			 		highest = allTonalities[i];
+			 	}
+		 }
+		 return highest;
 	 }
+	 
+	 public Tonality bestMinorCorrelation(){
+		 Tonality highest = Tonality.GSHARP;
+		 Tonality[] allTonalities = {MusicKey.Tonality.GSHARP, MusicKey.Tonality.A,MusicKey.Tonality.ASHARP,MusicKey.Tonality.B,MusicKey.Tonality.C,MusicKey.Tonality.D,
+		                             MusicKey.Tonality.DSHARP, MusicKey.Tonality.E,MusicKey.Tonality.F,MusicKey.Tonality.FSHARP,MusicKey.Tonality.G};
+		 for(int i=1;i<12;i++){
+			 	if(
+			 			
+			 			KrumhanslShmuckler(HISTOGRAMVALUES[0],HISTOGRAMVALUES[1],HISTOGRAMVALUES[2],HISTOGRAMVALUES[3],HISTOGRAMVALUES[4],HISTOGRAMVALUES[5],HISTOGRAMVALUES[6],HISTOGRAMVALUES[7],HISTOGRAMVALUES[8],HISTOGRAMVALUES[9],HISTOGRAMVALUES[10],HISTOGRAMVALUES[11],allTonalities[i],Mode.MINOR)
+			 			>
+			 			KrumhanslShmuckler(HISTOGRAMVALUES[0],HISTOGRAMVALUES[1],HISTOGRAMVALUES[2],HISTOGRAMVALUES[3],HISTOGRAMVALUES[4],HISTOGRAMVALUES[5],HISTOGRAMVALUES[6],HISTOGRAMVALUES[7],HISTOGRAMVALUES[8],HISTOGRAMVALUES[9],HISTOGRAMVALUES[10],HISTOGRAMVALUES[11],highest,Mode.MINOR)	 			
+			 			)
+			 	{
+			 		highest = allTonalities[i];
+			 	}
+		 }
+		 return highest;
+	 }
+	 
+	 public Tonality bestCorrelationTonality(){
+		 Tonality highest = Tonality.GSHARP; // why not copy paste more plus is more scalable
+		 if(
+		 			
+		 			KrumhanslShmuckler(HISTOGRAMVALUES[0],HISTOGRAMVALUES[1],HISTOGRAMVALUES[2],HISTOGRAMVALUES[3],HISTOGRAMVALUES[4],HISTOGRAMVALUES[5],HISTOGRAMVALUES[6],HISTOGRAMVALUES[7],HISTOGRAMVALUES[8],HISTOGRAMVALUES[9],HISTOGRAMVALUES[10],HISTOGRAMVALUES[11],bestMajorCorrelation(),Mode.MAJOR)
+		 			>
+		 			KrumhanslShmuckler(HISTOGRAMVALUES[0],HISTOGRAMVALUES[1],HISTOGRAMVALUES[2],HISTOGRAMVALUES[3],HISTOGRAMVALUES[4],HISTOGRAMVALUES[5],HISTOGRAMVALUES[6],HISTOGRAMVALUES[7],HISTOGRAMVALUES[8],HISTOGRAMVALUES[9],HISTOGRAMVALUES[10],HISTOGRAMVALUES[11],bestMinorCorrelation(),Mode.MINOR)	 			
+		 			)
+		 	{
+		 		highest = bestMajorCorrelation();
+		 	} else{
+		 		highest = bestMinorCorrelation();
+		 	}
+		 return highest;
+	 }
+	 
+	 public Mode bestCorrelationMode(){
+		 Mode highest = Mode.NOTMODE;
+		 if(
+		 			
+		 			KrumhanslShmuckler(HISTOGRAMVALUES[0],HISTOGRAMVALUES[1],HISTOGRAMVALUES[2],HISTOGRAMVALUES[3],HISTOGRAMVALUES[4],HISTOGRAMVALUES[5],HISTOGRAMVALUES[6],HISTOGRAMVALUES[7],HISTOGRAMVALUES[8],HISTOGRAMVALUES[9],HISTOGRAMVALUES[10],HISTOGRAMVALUES[11],bestMajorCorrelation(),Mode.MAJOR)
+		 			>
+		 			KrumhanslShmuckler(HISTOGRAMVALUES[0],HISTOGRAMVALUES[1],HISTOGRAMVALUES[2],HISTOGRAMVALUES[3],HISTOGRAMVALUES[4],HISTOGRAMVALUES[5],HISTOGRAMVALUES[6],HISTOGRAMVALUES[7],HISTOGRAMVALUES[8],HISTOGRAMVALUES[9],HISTOGRAMVALUES[10],HISTOGRAMVALUES[11],bestMinorCorrelation(),Mode.MINOR)	 			
+		 			)
+		 	{
+		 		highest = Mode.MAJOR;
+		 	} else{
+		 		highest = Mode.MINOR;
+		 	}
+		 return highest;
+	 }
+	 
 }
