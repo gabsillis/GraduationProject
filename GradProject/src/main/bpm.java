@@ -3,7 +3,6 @@ import java.io.IOException;
 
 import javax.sound.sampled.AudioInputStream;
 
-import org.jtransforms.fft.DoubleFFT_1D;
 
 public class bpm {
 	final double BEATTHRESHOLD = 1.35;
