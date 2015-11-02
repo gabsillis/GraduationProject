@@ -1,7 +1,7 @@
 package main;
 
 public class bpmCorrelation {
-	public double getCorrelation(double bpm1, double bpm2){
+	public static double getCorrelation(double bpm1, double bpm2){
 		if(bpm1 == bpm2){
 			return 1;
 		} else {
