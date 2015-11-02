@@ -1,6 +1,11 @@
 package main;
 
 import java.io.File;
+import java.io.IOException;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import main.MusicKey.Mode;
 import main.MusicKey.Tonality;
@@ -8,13 +13,28 @@ import main.MusicKey.Tonality;
 public class MusicPiece {
 	private static Tonality tonality;
 	private static Mode mode;
-	private static double bpm;
+	private static double beatsPerMinute;
 	private static File file;
-	public MusicPiece(Tonality t, Mode m, double b, File f){
-		tonality = t;
-		mode = m;
-		bpm = b;
+	public MusicPiece(File f){
+		// file constructor referenced by f
 		file = f;
+		
+		// create AudioInputStream from f
+		AudioInputStream aio = null;
+		try {
+			aio = AudioSystem.getAudioInputStream(f);
+		} catch (UnsupportedAudioFileException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// get bpm of AudioInputStream to return in getbpm() method
+		beatsPerMinute = main.bpm.getbpm(aio);
+		
+		// TODO store info for best correlation tonality and mdoe
 	}
 	
 	public Tonality getTonality(){
@@ -26,7 +46,7 @@ public class MusicPiece {
 	}
 	
 	public double getbpm(){
-		return bpm;
+		return beatsPerMinute;
 	}
 	
 	public File getFile(){

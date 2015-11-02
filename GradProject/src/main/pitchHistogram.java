@@ -15,7 +15,7 @@ public class pitchHistogram {
 	 public enum majorProfile{
 		 // from rnhart.net/articles/key-finding/
 		 DO(6.35),
-		 DOSharp(2.23),
+		 DOSharp(2.33),
 		 RE(3.48),
 		 RESharp(2.33),
 		 MI(4.38),
@@ -35,18 +35,18 @@ public class pitchHistogram {
 	 }
 	 public enum minorProfile{
 		 // from rnhart.net/articles/key-finding/
-		 DO(5.38),
-		 DOSharp(2.60),
-		 RE(3.53),
-		 RESharp(2.54),
-		 MI(4.75),
-		 FA(3.98),
-		 FASharp(2.69),
-		 SO(3.34),
-		 SOSharp(3.17),
-		 LA(6.33),
-		 LASharp(2.68),
-		 TI(3.52);
+		 DO(6.33),
+		 DOSharp(2.68),
+		 RE(3.52),
+		 RESharp(5.38),
+		 MI(2.6),
+		 FA(3.53),
+		 FASharp(2.54),
+		 SO(4.75),
+		 SOSharp(3.98),
+		 LA(2.69),
+		 LASharp(3.34),
+		 TI(3.17);
 		 
 		 final Double MinorWeighting;
 		 minorProfile(Double MinorWeighting){
@@ -110,9 +110,9 @@ public class pitchHistogram {
 						 // this is redundant for this case but not others
 						 // it is also redundant for this case but not others
 						 // this comment is a redundant comment that this if statement is redundant for this case but not others
-						 processingArray[i][2] = HISTOGRAMVALUES[i];
+						 processingArray[i][0] = HISTOGRAMVALUES[i];
 					 } else {
-						 processingArray[(i-12)][2] = HISTOGRAMVALUES[(i-12)];
+						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(i-12)];
 					 }
 				 }
 				 break;
@@ -121,10 +121,10 @@ public class pitchHistogram {
 				 int j = 0; // a counter
 				 for(int i = 1; i<13; i++){
 					 if(i<12){
-						 processingArray[i][2] = HISTOGRAMVALUES[j];
+						 processingArray[i][0] = HISTOGRAMVALUES[j];
 						 j++;
 					 } else {
-						 processingArray[(i-12)][2] = HISTOGRAMVALUES[(j)];
+						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(j)];
 						 j++;
 					 }
 				 }
@@ -134,10 +134,10 @@ public class pitchHistogram {
 				 int k = 0; // a counter
 				 for(int i = 2; i<14; i++){
 					 if(i<12){
-						 processingArray[i][2] = HISTOGRAMVALUES[k];
+						 processingArray[i][0] = HISTOGRAMVALUES[k];
 						 k++;
 					 } else {
-						 processingArray[(i-12)][2] = HISTOGRAMVALUES[(k)];
+						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(k)];
 						 k++;
 					 }
 				 }
@@ -147,10 +147,10 @@ public class pitchHistogram {
 				 int l = 0;
 				 for(int i = 3; i<15; i++){
 					 if(i<12){
-						 processingArray[i][2] = HISTOGRAMVALUES[l];
+						 processingArray[i][0] = HISTOGRAMVALUES[l];
 						 l++;
 					 } else {
-						 processingArray[(i-12)][2] = HISTOGRAMVALUES[(l)];
+						 processingArray[(i-12)][0] = HISTOGRAMVALUES[l];
 						 l++;
 					 }
 				 }
@@ -160,10 +160,10 @@ public class pitchHistogram {
 				 int m = 0; // a counter
 				 for(int i = 4; i<16; i++){
 					 if(i<12){
-						 processingArray[i][2] = HISTOGRAMVALUES[m];
+						 processingArray[i][0] = HISTOGRAMVALUES[m];
 						 m++;
 					 } else {
-						 processingArray[(i-12)][2] = HISTOGRAMVALUES[(m)];
+						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(m)];
 						 m++;
 					 }
 				 }
@@ -173,10 +173,10 @@ public class pitchHistogram {
 				 int n = 0; // a counter
 				 for(int i = 5; i<17; i++){
 					 if(i<12){
-						 processingArray[i][2] = HISTOGRAMVALUES[n];
+						 processingArray[i][0] = HISTOGRAMVALUES[n];
 						 n++;
 					 } else {
-						 processingArray[(i-12)][2] = HISTOGRAMVALUES[(n)];
+						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(n)];
 						 n++;
 					 }
 				 }
@@ -186,10 +186,10 @@ public class pitchHistogram {
 				 int o = 0; // a counter
 				 for(int i = 6; i<18; i++){
 					 if(i<12){
-						 processingArray[i][2] = HISTOGRAMVALUES[o];
+						 processingArray[i][0] = HISTOGRAMVALUES[o];
 						 o++;
 					 } else {
-						 processingArray[(i-12)][2] = HISTOGRAMVALUES[(o)];
+						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(o)];
 						 o++;
 					 }
 				 }
@@ -199,10 +199,10 @@ public class pitchHistogram {
 				 int p = 0; // a counter
 				 for(int i = 7; i<19; i++){
 					 if(i<12){
-						 processingArray[i][2] = HISTOGRAMVALUES[p];
+						 processingArray[i][0] = HISTOGRAMVALUES[p];
 						 p++;
 					 } else {
-						 processingArray[(i-12)][2] = HISTOGRAMVALUES[(p)];
+						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(p)];
 						 p++;
 					 }
 				 }
@@ -212,10 +212,10 @@ public class pitchHistogram {
 				 int q = 0; // a counter
 				 for(int i = 8; i<20; i++){
 					 if(i<12){
-						 processingArray[i][2] = HISTOGRAMVALUES[q];
+						 processingArray[i][0] = HISTOGRAMVALUES[q];
 						 q++;
 					 } else {
-						 processingArray[(i-12)][2] = HISTOGRAMVALUES[(q)];
+						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(q)];
 						 q++;
 					 }
 				 }
@@ -225,10 +225,10 @@ public class pitchHistogram {
 				 int r = 0; // a counter
 				 for(int i = 9; i<21; i++){
 					 if(i<12){
-						 processingArray[i][2] = HISTOGRAMVALUES[r];
+						 processingArray[i][0] = HISTOGRAMVALUES[r];
 						 r++;
 					 } else {
-						 processingArray[(i-12)][2] = HISTOGRAMVALUES[(r)];
+						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(r)];
 						 r++;
 					 }
 				 }
@@ -238,10 +238,10 @@ public class pitchHistogram {
 				 int s = 0; // a counter
 				 for(int i = 10; i<22; i++){
 					 if(i<12){
-						 processingArray[i][2] = HISTOGRAMVALUES[s];
+						 processingArray[i][0] = HISTOGRAMVALUES[s];
 						 s++;
 					 } else {
-						 processingArray[(i-12)][2] = HISTOGRAMVALUES[(s)];
+						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(s)];
 						 s++;
 					 }
 				 }
@@ -251,10 +251,10 @@ public class pitchHistogram {
 				 int t = 0; // a counter
 				 for(int i = 11; i<23; i++){
 					 if(i<12){
-						 processingArray[i][2] = HISTOGRAMVALUES[t];
+						 processingArray[i][0] = HISTOGRAMVALUES[t];
 						 t++;
 					 } else {
-						 processingArray[(i-12)][2] = HISTOGRAMVALUES[(t)];
+						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(t)];
 						 t++;
 					 }
 				 }
@@ -269,8 +269,8 @@ public class pitchHistogram {
 			 double sumx = 0.0;
 			 double sumy = 0.0;
 			 for(int i=0;i<12;i++){
-				 sumx = sumx + processingArray[i][1];
-				 sumy = sumy + processingArray[i][2];
+				 sumx = sumx + processingArray[i][0];
+				 sumy = sumy + processingArray[i][1];
 			 }
 			 xmean = sumx/12;
 			 ymean = sumy/12;
@@ -286,8 +286,8 @@ public class pitchHistogram {
 			 double bottomy = 0.0;
 			 
 			 for(int k = 0; k < 12; k++){
-				 double xdiff = processingArray[k][1]-xmean;
-				 double ydiff = processingArray[k][2]-ymean;
+				 double xdiff = processingArray[k][0]-xmean;
+				 double ydiff = processingArray[k][1]-ymean;
 				 top = top+((xdiff)*(ydiff));
 				 bottomx = bottomx + Math.pow(xdiff, 2);
 				 bottomy = bottomy + Math.pow(ydiff, 2);
@@ -300,7 +300,7 @@ public class pitchHistogram {
 	 
 	 public Tonality bestMajorCorrelation(){
 		 Tonality highest = Tonality.GSHARP;
-		 Tonality[] allTonalities = {MusicKey.Tonality.GSHARP, MusicKey.Tonality.A,MusicKey.Tonality.ASHARP,MusicKey.Tonality.B,MusicKey.Tonality.C,MusicKey.Tonality.D,
+		 Tonality[] allTonalities = {MusicKey.Tonality.GSHARP, MusicKey.Tonality.A,MusicKey.Tonality.ASHARP,MusicKey.Tonality.B,MusicKey.Tonality.C,MusicKey.Tonality.CSHARP, MusicKey.Tonality.D,
 		                             MusicKey.Tonality.DSHARP, MusicKey.Tonality.E,MusicKey.Tonality.F,MusicKey.Tonality.FSHARP,MusicKey.Tonality.G};
 		 for(int i=1;i<12;i++){
 			 	if(
@@ -318,7 +318,7 @@ public class pitchHistogram {
 	 
 	 public Tonality bestMinorCorrelation(){
 		 Tonality highest = Tonality.GSHARP;
-		 Tonality[] allTonalities = {MusicKey.Tonality.GSHARP, MusicKey.Tonality.A,MusicKey.Tonality.ASHARP,MusicKey.Tonality.B,MusicKey.Tonality.C,MusicKey.Tonality.D,
+		 Tonality[] allTonalities = {MusicKey.Tonality.GSHARP, MusicKey.Tonality.A,MusicKey.Tonality.ASHARP,MusicKey.Tonality.B,MusicKey.Tonality.C,MusicKey.Tonality.CSHARP, MusicKey.Tonality.D,
 		                             MusicKey.Tonality.DSHARP, MusicKey.Tonality.E,MusicKey.Tonality.F,MusicKey.Tonality.FSHARP,MusicKey.Tonality.G};
 		 for(int i=1;i<12;i++){
 			 	if(

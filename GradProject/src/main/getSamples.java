@@ -16,6 +16,9 @@ import javax.sound.sampled.*;
 import javax.swing.*;
 import javax.swing.filechooser.*;
 
+import main.MusicKey.Mode;
+import main.MusicKey.Tonality;
+
 import org.jtransforms.dct.*;
 import org.jtransforms.fft.DoubleFFT_1D;
 import org.jtransforms.fft.DoubleFFT_2D;
@@ -39,6 +42,8 @@ public class getSamples extends JPanel implements ActionListener{
 	    }
 	    return dest;
 	}
+	
+	
 	
 	public getSamples() {
 		fc = new JFileChooser();
@@ -127,7 +132,6 @@ public class getSamples extends JPanel implements ActionListener{
 	  					    fftResult = fftBase.fft(fftInputReal,fftInputIm,true);
 	  					    debugPrint.printResult(fftResult,fftChunkSize/2,j);
 	  					    dominantBinNr = getDominantFrequencyBinNr(fftResult,fftChunkSize/2);
-	  					    System.out.println(dominantBinNr);
 	  					    frequencyPlot[i][j][0]= Math.round(binSize*dominantBinNr + binSize/2) ; /* Calculate Middle Frequency of the dominant Bin */
 	  					    frequencyPlot[i][j][1]= Math.round(Math.sqrt(fftResult[2*dominantBinNr]*fftResult[2*dominantBinNr]+fftResult[2*dominantBinNr+1]*fftResult[2*dominantBinNr+1]));/*Store amplitude at dominant frequency */
 	  					    noteIndex = NoteHistogram.binToNoteArrayIndex(binSize, dominantBinNr, noteArrayFrequencies);
@@ -137,6 +141,12 @@ public class getSamples extends JPanel implements ActionListener{
 					System.out.println("nr Of Channels : " + channels + "nr of chunks: " + nrOfChunksPerChannel);
 					debugPrint.printCSV(frequencyPlot,channels,nrOfChunksPerChannel);
 					debugPrint.printHistogram(noteHistogram);
+					
+					pitchHistogram pH = new pitchHistogram(NoteHistogram.make12NoteHistogram(noteHistogram));
+					Tonality tonality = pH.bestCorrelationTonality();
+					Mode mode = pH.bestCorrelationMode();
+					System.out.println("tonality "+ tonality);
+					System.out.println("mode " + mode);
 					
 			}catch (UnsupportedAudioFileException | IOException e1) {
 					System.out.println("please use supported audio types");
