@@ -15,6 +15,10 @@ import javax.sound.sampled.*;
 import javax.swing.*;
 import javax.swing.filechooser.*;
 
+import main.NoteHistogram;
+import main.debugPrint;
+import main.fftBase;
+
 import org.jtransforms.dct.*;
 import org.jtransforms.fft.DoubleFFT_1D;
 import org.jtransforms.fft.DoubleFFT_2D;
