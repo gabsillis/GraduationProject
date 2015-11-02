@@ -1,0 +1,41 @@
+package main;
+import java.util.Arrays;
+import main.MusicKey.Tonality;
+import main.MusicKey.Mode;
+
+
+public class KeyCorrelation {
+	// Correlations_[Base Mode]_[Final_Mode]_[tonalityDifference]
+	// Base Mode and Final Mode: 0 = major; 1 = minor
+	// Initial and Final Tonality: 1 = GSHARP 
+		public static final double[][][] Correlations = new double[2][2][12];
+		
+		static{
+		}
+		
+
+		
+		
+	public double getCorrelation(MusicKey key1, Tonality Tonality_key1, MusicKey key2, Tonality Tonality_key2){
+		key1.setTonality(Tonality_key1);
+		key2.setTonality(Tonality_key2);
+		
+		Mode mode1 = key1.getMode();
+		Mode mode2 = key2.getMode();
+		if(mode1 == Mode.MAJOR){
+			if(key2.getTonality() == key1.getTonality()){
+				if(key2.getMode() == key1.getMode()){
+					return Correlations[0][0][];
+				} else {
+					return 9.0;
+				}
+				
+			}
+		} else if(mode1 == Mode.MINOR){
+			
+		}
+		return 0;
+		
+	}
+
+}

@@ -1,0 +1,12 @@
+
+public class reimmanSum {
+	public double function(double y,double x){
+		return Math.pow(y, 2)-2*Math.pow(x, 2);
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

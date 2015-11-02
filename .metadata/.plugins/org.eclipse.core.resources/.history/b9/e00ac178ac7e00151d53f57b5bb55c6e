@@ -1,0 +1,8 @@
+package main;
+import javax.media.*;
+
+public class bpm {
+	public double getbpm(audioInputStream audioinput){
+		
+	}
+}

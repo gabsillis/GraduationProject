@@ -1,0 +1,59 @@
+package main;
+
+public class pitchHistogram {
+	final double GSHARPVALUE = 0;
+	final double AVALUE = 0;
+	final double ASHARPVALUE = 0;
+	final double BVALUE = 0;
+	final double CVALUE = 0;
+	final double CSHARPVALUE = 0;
+	final double DVALUE = 0;
+	final double DSHARPVALUE = 0;
+	final double EVALUE = 0;
+	final double FVALUE = 0;
+	final double FSHARPVALUE = 0;
+	final double GVALUE = 0;
+	
+	 public enum majorProfile{
+		 // from rnhart.net/articles/key-finding/
+		 C(6.35),
+		 CSharp(2.23),
+		 D(3.48),
+		 DSharp(2.33),
+		 E(4.38),
+		 F(4.09),
+		 FSharp(2.52),
+		 G(5.19),
+		 GSharp(2.39),
+		 A(3.66),
+		 ASharp(2.29),
+		 B(2.88);
+		 
+		 final Double MajorWeighting;
+		 majorProfile(Double MajorWeighting){
+			 this.MajorWeighting = MajorWeighting;
+		 }
+		 
+	 }
+	 public enum minorProfile{
+		 // from rnhart.net/articles/key-finding/
+		 C(6.35),
+		 CSharp(2.23),
+		 D(3.48),
+		 DSharp(2.33),
+		 E(4.38),
+		 F(4.09),
+		 FSharp(2.52),
+		 G(5.19),
+		 GSharp(2.39),
+		 A(3.66),
+		 ASharp(2.29),
+		 B(2.88);
+		 
+		 final Double MinorWeighting;
+		 minorProfile(Double MinorWeighting){
+			 this.MinorWeighting = MinorWeighting;
+		 }
+		 
+	 }
+}

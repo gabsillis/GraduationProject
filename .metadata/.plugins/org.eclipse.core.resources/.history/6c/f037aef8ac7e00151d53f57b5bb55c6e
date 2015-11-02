@@ -1,0 +1,8 @@
+package main;
+import javax.sound.sampled.AudioInputStream;
+
+public class bpm {
+	public double getbpm(AudioInputStream audioinput){
+		
+	}
+}
