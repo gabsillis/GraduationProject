@@ -1,0 +1,62 @@
+
+public class MusicKey {
+	public enum Tonality{
+		A(1.0),
+		ASharp(1.5),
+		B(2.0),
+		C(3.0),
+		D(4.0),
+		E(5.0),
+		F(6.0),
+		G(7.0);
+		
+		private final Double baseDegree; // to set a base numerical degree for each note
+		Tonality(Double baseDegree){
+			this.baseDegree = baseDegree;
+		}
+	}
+	
+	
+
+	private Tonality Tonality;
+	public Tonality DoubleToTonality(Double input){
+		input = input%7; // modulus with 7
+		if(input == 0.5){
+			return Tonality.ASharp;
+		}
+		// a default that hopefully never gets used but to stop compiler errors
+		return Tonality.A;
+		
+	}
+	public void setTonality(Tonality Tonality){
+		this.Tonality = Tonality;
+	}
+	
+	public Tonality getTonality(){
+		return this.Tonality;
+	}
+	
+	public Tonality getSupertonic(){
+		return intToTonality(getTonality().baseDegree +1);
+	}
+	
+	public Tonality getMediant(){
+		return intToTonality(getTonality().baseDegree +2);
+	}
+	
+	public Tonality getSubdominant(){
+		return intToTonality(getTonality().baseDegree +3);
+	}
+	
+	public Tonality getDominant(){
+		return intToTonality(getTonality().baseDegree +4);
+	}
+	
+	public Tonality getSubmediant(){
+		return intToTonality(getTonality().baseDegree +5);
+	}
+	
+	public Tonality getLeadingTone(){
+		return intToTonality(getTonality().baseDegree +6);
+	}
+}

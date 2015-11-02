@@ -2,4 +2,10 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="javax.swing.JFileChooser"/>
 <fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="javax.media.protocol.DataSource"/>
+<fullyQualifiedTypeName name="javax.media.Processor"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="org.jtransforms.fft.DoubleFFT_1D"/>
+<fullyQualifiedTypeName name="org.jtransforms.fft.DoubleFFT_2D"/>
+<fullyQualifiedTypeName name="org.jtransforms.dht.DoubleDHT_1D"/>
 </qualifiedTypeNameHistroy>

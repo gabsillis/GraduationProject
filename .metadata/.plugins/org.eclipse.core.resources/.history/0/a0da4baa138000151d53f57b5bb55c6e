@@ -1,0 +1,16 @@
+package main;
+
+import main.MusicKey.Mode;
+import main.MusicKey.Tonality;
+
+public class MusicPiece {
+	private static Tonality tonality;
+	private static Mode mode;
+	private static double bpm;
+	public MusicPiece(Tonality t, Mode m, double b){
+		tonality = t;
+		mode = m;
+		bpm = b;
+	}
+
+}

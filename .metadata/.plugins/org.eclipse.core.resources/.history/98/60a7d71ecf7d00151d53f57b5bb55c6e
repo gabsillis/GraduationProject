@@ -1,0 +1,17 @@
+package main;
+
+public class pitchHistogram {
+	final double GSHARPVALUE = 0;
+	final double AVALUE = 0;
+	final double ASHARPVALUE = 0;
+	final double BVALUE = 0;
+	final double CVALUE = 0;
+	final double CSHARPVALUE = 0;
+	final double DVALUE = 0;
+	final double DSHARPVALUE = 0;
+	final double EVALUE = 0;
+	final double FVALUE = 0;
+	final double FSHARPVALUE = 0;
+	final double GVALUE = 0;
+	
+}
