@@ -1,0 +1,10 @@
+package main;
+
+public class Ordering {
+	Ordering(MusicPiece[] musicPieces){
+		for(int i=0;i<musicPieces.length;i++){
+			
+		}
+	}
+
+}

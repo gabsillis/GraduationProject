@@ -1,0 +1,22 @@
+
+public class MusicKey {
+	public enum Tonality{
+		A,
+		B,
+		C,
+		D,
+		E,
+		F,
+		G
+	}
+
+	private Tonality Tonality;
+	
+	public void setTonality(Tonality Tonality){
+		this.Tonality = Tonality;
+	}
+	
+	public Tonality getDominant(){
+		return this.Tonality;
+	}
+}

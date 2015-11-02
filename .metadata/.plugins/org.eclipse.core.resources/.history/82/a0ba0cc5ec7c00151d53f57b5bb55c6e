@@ -1,0 +1,32 @@
+package main;
+import java.util.Arrays;
+import main.MusicKey.Tonality;
+import main.MusicKey.Mode;
+
+
+public class KeyCorrelation {
+	// Correlations_[Base Mode]_[Final_Mode]_[Initial_Tonality]_[Final_Tonality]
+		public static final double[][][][] Correlations = new double[2][2][12][12];
+		
+		static{
+			Correlations.fill(0.0);
+		}
+		
+
+		
+		
+	public double getCorrelation(MusicKey key1, Tonality Tonality_key1, MusicKey key2, Tonality Tonality_key2){
+		key1.setTonality(Tonality_key1);
+		key2.setTonality(Tonality_key2);
+		
+		Mode mode1 = key1.getMode();
+		Mode mode2 = key2.getMode();
+		
+		
+		
+		
+		return 0;
+		
+	}
+
+}

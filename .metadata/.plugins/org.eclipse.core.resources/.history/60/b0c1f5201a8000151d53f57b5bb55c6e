@@ -1,0 +1,16 @@
+package main;
+
+
+public class Ordering {
+	private static MusicPiece[] ordered;
+	Ordering(MusicPiece[] musicPieces){
+		ordered = new MusicPiece[musicPieces.length];
+		ordered[0] = musicPieces[0];
+		for(int i=1;i<musicPieces.length;i++){
+			for(int j=0;j<musicPieces.length;j++){
+				
+			}
+		}
+	}
+
+}

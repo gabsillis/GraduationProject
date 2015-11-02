@@ -1,0 +1,103 @@
+
+public class MusicKey {
+	private Tonality Tonality;
+	private Mode Mode;
+	
+	public void setTonality(Tonality Tonality){
+		this.Tonality = Tonality;
+	}
+	
+	public Tonality getTonality(){
+		return this.Tonality;
+	}
+	
+	public enum Mode{
+		MAJOR,
+		MINOR,
+	}
+	
+	public enum Tonality{
+		GSHARP(0.5),
+		A(1.0),
+		ASHARP(1.5),
+		B(2.0),
+		BSHARP(2.5),
+		C(3.0),
+		CSHARP(3.5),
+		D(4.0),
+		DSHARP(4.5),
+		E(5.0),
+		ESHARP(5.5),
+		F(6.0),
+		FSHARP(7.5),
+		G(7.0);
+		
+		private final Double baseDegree; // to set a base numerical degree for each note
+		Tonality(Double baseDegree){
+			this.baseDegree = baseDegree;
+		}
+	}
+	
+	
+
+	public Tonality doubleToTonality(Double input){
+		input = input%7; // modulus with 7
+		if(input == 0.5){
+			return Tonality.GSHARP;
+		} else if(input == 1){
+			return Tonality.A;
+		} else if(input == 1.5){
+			return Tonality.ASHARP;
+		} else if(input == 2){
+			return Tonality.B;
+		} else if(input == 2.5){
+			return Tonality.BSHARP;
+		} else if(input == 3){
+			return Tonality.C;
+		} else if(input == 3.5){
+			return Tonality.CSHARP;
+		} else if(input == 4){
+			return Tonality.D;
+		} else if(input == 4.5){
+			return Tonality.DSHARP;
+		} else if(input == 5){
+			return Tonality.E;
+		}else if(input == 5.5){
+			return Tonality.ESHARP;
+		} else if(input == 6){
+			return Tonality.F;
+		} else if(input == 6.5){
+			return Tonality.FSHARP;
+		} else if(input == 7){
+			return Tonality.G;
+		}
+		// a default that hopefully never gets used but to stop compiler errors
+		return Tonality.A;
+		
+	}
+	
+	
+	public Tonality getSupertonic(){
+		return doubleToTonality(getTonality().baseDegree +1);
+	}
+	
+	public Tonality getMediant(){
+		return doubleToTonality(getTonality().baseDegree +2);
+	}
+	
+	public Tonality getSubdominant(){
+		return doubleToTonality(getTonality().baseDegree +3);
+	}
+	
+	public Tonality getDominant(){
+		return doubleToTonality(getTonality().baseDegree +4);
+	}
+	
+	public Tonality getSubmediant(){
+		return doubleToTonality(getTonality().baseDegree +5);
+	}
+	
+	public Tonality getLeadingTone(){
+		return doubleToTonality(getTonality().baseDegree +6);
+	}
+}

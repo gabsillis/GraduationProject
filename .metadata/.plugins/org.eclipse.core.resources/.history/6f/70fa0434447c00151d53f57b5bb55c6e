@@ -1,0 +1,12 @@
+
+public class MusicKey {
+	public enum Tonality{
+		A,
+		B,
+		C,
+		D,
+		E,
+		F,
+		G
+	}
+}
