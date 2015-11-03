@@ -45,4 +45,13 @@ public class NoteHistogram {
 	     }  
 		return noteIndex;
 	}
+	public static double[] make12NoteHistogram(int[] array){
+		int j = 4;
+		double[] NoteArray = new double[12];
+		for(int i = 0; i<107; i++){
+			NoteArray[j] = NoteArray[j] + array[i];
+			j = (j+1) % 12;
+		}
+		return NoteArray;
+	}
 }

@@ -5,12 +5,12 @@ import javax.sound.sampled.AudioInputStream;
 
 
 public class bpm {
-	final double BEATTHRESHOLD = 1.35;
-	protected int getSixteenBitSample(int high, int low) {
+	final static double BEATTHRESHOLD = 1.35;
+	protected static int getSixteenBitSample(int high, int low) {
 	    return ((high << 8) + (low & 0x00ff)) ;
 	}
 	
-	public double getbpm(AudioInputStream audioInputStream){
+	public static double getbpm(AudioInputStream audioInputStream){
 		int frameLength =  (int) audioInputStream.getFrameLength();
 		int frameSize = (int) audioInputStream.getFormat().getFrameSize();
 		double sampleRate = audioInputStream.getFormat().getSampleRate();
