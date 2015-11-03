@@ -81,15 +81,16 @@ public class getSamples extends JPanel implements ActionListener{
 					float sampleRate = audioInputStream.getFormat().getSampleRate();
 					int bitsPerSample = audioInputStream.getFormat().getSampleSizeInBits();
 					boolean isBigEndian = audioInputStream.getFormat().isBigEndian();
+                    NoteHistogram aNoteHistogram = new NoteHistogram(440);
+					
 					byte[] eightBitByteArray = new byte[frameLength * frameSize];
 					int bytesRead = audioInputStream.read(eightBitByteArray);
 					int channels = audioInputStream.getFormat().getChannels();
 					int[][] samples = new int[channels][frameLength * frameSize];
-//					DoubleFFT_1D DFTransformer = new DoubleFFT_1D(indexFrameSize);
-//					printByteStream(eightBitByteArray,eightBitByteArray.length);
-					/* split wav byte sequence in 16 bit streams per channel */
 					int sampleIndex = 0;
 					int sample;
+
+					
 					byte [] makeInt = new byte [4];
 					for(int t=0; t < bytesRead;t=t+2) {
 						for(int channel = 0; channel < channels; channel++){
@@ -117,8 +118,8 @@ public class getSamples extends JPanel implements ActionListener{
 					float binSize = (sampleRate/2)/(fftChunkSize/2);
 	                float [][][] frequencyPlot = new float [channels][nrOfChunksPerChannel][2];
 	                int dominantBinNr;
-	                double [] noteArrayFrequencies = NoteHistogram.builtNoteArrayFrequencies((double)440);
-	                int [] noteHistogram = NoteHistogram.initNoteHistogram();
+
+
 	                int noteIndex;
 					double[] fftInputReal = new double[fftChunkSize];
 					double[] fftInputIm = new double[fftChunkSize];
@@ -132,17 +133,16 @@ public class getSamples extends JPanel implements ActionListener{
 	  					    fftResult = fftBase.fft(fftInputReal,fftInputIm,true);
 	  					    debugPrint.printResult(fftResult,fftChunkSize/2,j);
 	  					    dominantBinNr = getDominantFrequencyBinNr(fftResult,fftChunkSize/2);
-	  					    frequencyPlot[i][j][0]= Math.round(binSize*dominantBinNr + binSize/2) ; /* Calculate Middle Frequency of the dominant Bin */
-	  					    frequencyPlot[i][j][1]= Math.round(Math.sqrt(fftResult[2*dominantBinNr]*fftResult[2*dominantBinNr]+fftResult[2*dominantBinNr+1]*fftResult[2*dominantBinNr+1]));/*Store amplitude at dominant frequency */
-	  					    noteIndex = NoteHistogram.binToNoteArrayIndex(binSize, dominantBinNr, noteArrayFrequencies);
-	  					    noteHistogram[noteIndex]++;
+//	  					    frequencyPlot[i][j][0]= Math.round(binSize*dominantBinNr + binSize/2) ; /* Calculate Middle Frequency of the dominant Bin */
+//  					    frequencyPlot[i][j][1]= Math.round(Math.sqrt(fftResult[2*dominantBinNr]*fftResult[2*dominantBinNr]+fftResult[2*dominantBinNr+1]*fftResult[2*dominantBinNr+1]));/*Store amplitude at dominant frequency */
+	  					    aNoteHistogram.addBinToNoteArrayIndex(binSize, dominantBinNr); 					
 						}    
 					}
 					System.out.println("nr Of Channels : " + channels + "nr of chunks: " + nrOfChunksPerChannel);
-					debugPrint.printCSV(frequencyPlot,channels,nrOfChunksPerChannel);
-					debugPrint.printHistogram(noteHistogram);
+//					debugPrint.printCSV(frequencyPlot,channels,nrOfChunksPerChannel);
+					aNoteHistogram.debugPrintHistogram();
 					
-					pitchHistogram pH = new pitchHistogram(NoteHistogram.make12NoteHistogram(noteHistogram));
+					pitchHistogram pH = new pitchHistogram(aNoteHistogram.get12NoteHistogram());
 					Tonality tonality = pH.bestCorrelationTonality();
 					Mode mode = pH.bestCorrelationMode();
 					System.out.println("tonality "+ tonality);

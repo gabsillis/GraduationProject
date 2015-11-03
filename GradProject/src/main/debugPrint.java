@@ -67,19 +67,5 @@ public class debugPrint {
 			}
 		
 	}	
-	public static void printHistogram (int noteHist []){
-		File plotFile = new File("c:/GianniProject/NoteHistogram.csv");
-    	FileWriter myWriter;
-		try {
-				myWriter = new FileWriter(plotFile);
-				PrintWriter myPW = new PrintWriter(myWriter);
-				for ( int i=0;i<108;i++)
-						myPW.println(i+","+noteHist[i]);	
-				myWriter.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
-	}	
+
 }
