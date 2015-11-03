@@ -3,39 +3,43 @@ package main;
 
 public class Ordering {
 	
-	private void arraySwapToFront(MusicPiece[] array, int index){
-		MusicPiece temp = array[0];
-		array[0] = array[index];
-		array[index] = temp;
-	}
-	
-	private static MusicPiece[] ordered;
 	
 	
-	
-	Ordering(MusicPiece[] musicPieces){
-		ordered = new MusicPiece[musicPieces.length];
-		ordered[0] = musicPieces[0];
-		int length = musicPieces.length;
-		for(int i=musicPieces.length-1;i>0;i--){
-			
-			MusicKey key1 = new MusicKey();
-			key1.setMode(musicPieces[0].getMode());
-			MusicKey key2 = new MusicKey();
-			key2.setMode(musicPieces[1].getMode());
-			
-			MusicPiece greatest = musicPieces[1];
-			double GreatestCorrelation = bpmCorrelation.getCorrelation(musicPieces[0].getbpm(), musicPieces[1].getbpm())*KeyCorrelation.getCorrelation(key1, musicPieces[0].getTonality(), key2, musicPieces[1].getTonality());
-			for(int j=2; j<=i;j++){
-				key2.setMode(musicPieces[j].getMode());
-				
-				double Correlation = bpmCorrelation.getCorrelation(musicPieces[0].getbpm(), musicPieces[j].getbpm())*KeyCorrelation.getCorrelation(key1, musicPieces[0].getTonality(), key2, musicPieces[j].getTonality());
-				if(Correlation > GreatestCorrelation){
-					greatest = musicPieces[j];
-					GreatestCorrelation = Correlation;
-				}
+	public static int [] Order(MusicPiece [] allMP,int nrOfPieces,int seedPiece){
+		
+		int [] orderedList= new int[nrOfPieces]; //index 0 is pieceNr, index 1 is correlation Value
+
+
+		double greatestCorrelationValue =0,currentCorrelation=0;
+		int greatestCorrelationIndex;
+		for (int i=0;i<nrOfPieces;i++){
+		    orderedList[i]=i;
+		}    
+		orderedList[0]=seedPiece;
+		orderedList[seedPiece]=0;
+        int currentSeed = 0; 
+		while (currentSeed < nrOfPieces -1 ){
+			greatestCorrelationValue = 0;
+			greatestCorrelationIndex = 0;
+			for(int i=currentSeed+1;i<nrOfPieces;i++){
+				MusicKey key1 = new MusicKey();
+				key1.setMode(allMP[orderedList[currentSeed]].getMode());
+				MusicKey key2 = new MusicKey();
+				key2.setMode(allMP[orderedList[i]].getMode());
+				currentCorrelation=bpmCorrelation.getCorrelation(allMP[orderedList[currentSeed]].getbpm(), allMP[i].getbpm())*
+		    		                KeyCorrelation.getCorrelation(key1, allMP[orderedList[currentSeed]].getTonality(), key2, allMP[orderedList[i]].getTonality());
+                if (currentCorrelation > greatestCorrelationValue){ 
+                   greatestCorrelationValue = currentCorrelation;
+                   greatestCorrelationIndex = i;
+                }   
 			}
-		}
+			int swap;
+			swap = orderedList[currentSeed +1];
+			orderedList[currentSeed+1]=orderedList[greatestCorrelationIndex];
+			orderedList[greatestCorrelationIndex]=swap;
+			currentSeed++;
+		}	
+		return orderedList;    
 	}
 
 }

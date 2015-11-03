@@ -7,15 +7,22 @@ import javax.swing.UIManager;
 
 public class Sequencing {
 
-	public static void main(String[] args) {
+ 	public static void main(String[] args) {
 		running();
 
 	}
 	private static  void selectGUI(){
 		JFrame frame = new JFrame ("music selection");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.add(new getSamples().open);
-		frame.pack();
+	    frame.setSize(300,250); 
+
+		//This will center the JFrame in the middle of the screen 
+		frame.setLocationRelativeTo(null);
+			
+		
+		frame.add(new getSamples());
+
+//		frame.pack();
 		frame.setVisible(true);
 	}
 	

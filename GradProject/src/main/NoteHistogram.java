@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class NoteHistogram {
-	private static int [] noteHistogram;
-    private static double [] noteArrayFrequencies = NoteHistogram.builtNoteArrayFrequencies((double)440);
+	private int [] noteHistogram;
+    private double [] noteArrayFrequencies = NoteHistogram.builtNoteArrayFrequencies((double)440);
 	
 	public NoteHistogram(double A4Frequency){
 

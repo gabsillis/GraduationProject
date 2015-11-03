@@ -6,50 +6,22 @@ import javax.sound.sampled.AudioInputStream;
 
 public class bpm {
 	final static double BEATTHRESHOLD = 1.35;
-	protected static int getSixteenBitSample(int high, int low) {
-	    return ((high << 8) + (low & 0x00ff)) ;
-	}
-	
-	public static double getbpm(AudioInputStream audioInputStream){
-		int frameLength =  (int) audioInputStream.getFrameLength();
-		int frameSize = (int) audioInputStream.getFormat().getFrameSize();
-		double sampleRate = audioInputStream.getFormat().getSampleRate();
-		byte[] eightBitByteArray = new byte[frameLength * frameSize];
-		try {
-			int result = audioInputStream.read(eightBitByteArray);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		int channels = audioInputStream.getFormat().getChannels();
-		double[][] samples = new double[channels][frameLength];
 		
-		int sampleIndex = 0;
-		for(int t=0; t < eightBitByteArray.length;) {
-			for(int channel = 0; channel < channels; channel++){
-				int low = (int) eightBitByteArray[t];
-				t++;
-				int high = (int) eightBitByteArray[t];
-				t++;
-				int sample = getSixteenBitSample(high,low);
-				samples[channel][sampleIndex] = (double) sample;
-			}
-			sampleIndex++;
-		}
-		
-		
+	public static double getBPM(int[][] samples,int channels,int frameLength,int frameSize,float sampleRate){
+
 		double highAverage = 0.0;
 		double lowAverage = 0.0;
 		// only doing for one channel for now
 		for(int i=0;i<frameLength; i=i+2){
-			highAverage = highAverage+samples[1][i];
-			lowAverage = lowAverage+samples[1][i+1];
+			highAverage = highAverage+samples[0][i];
+			lowAverage = lowAverage+samples[0][i+1];
 		}
 		highAverage = highAverage/(frameLength*frameSize);
 		lowAverage = lowAverage/(frameLength*frameSize);
 		double absoluteAverage = (Math.abs(highAverage)+Math.abs(lowAverage))/2;
 		double bpm = 0.0;
 		for(int j=0;j<60*sampleRate/1024;j = j+1024){// for 1 min of music
-			if((Math.abs(samples[1][j])+Math.abs(samples[1][j]))/2 > absoluteAverage*BEATTHRESHOLD){
+			if((Math.abs(samples[0][j])+Math.abs(samples[0][j]))/2 > absoluteAverage*BEATTHRESHOLD){
 				bpm = bpm+1;
 			}
 		}
