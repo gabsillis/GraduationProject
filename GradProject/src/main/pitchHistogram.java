@@ -14,18 +14,20 @@ public class pitchHistogram {
 	
 	 public enum majorProfile{
 		 // from rnhart.net/articles/key-finding/
-		 DO(6.35),
-		 DOSharp(2.33),
-		 RE(3.48),
-		 RESharp(2.33),
-		 MI(4.38),
-		 FA(4.09),
-		 FASharp(2.52),
-		 SO(5.19),
-		 SOSharp(2.39),
-		 LA(3.66),
-		 LASharp(2.29),
-		 TI(2.88);
+		 // or from extras.humdrum.org/man/keycor/
+		 // major weights currently are Temperley-Kostka-Payne
+		 DO(0.748),
+		 DOSharp(0.060),
+		 RE(0.488),
+		 RESharp(0.082),
+		 MI(0.670),
+		 FA(0.460),
+		 FASharp(0.096),
+		 SO(0.715),
+		 SOSharp(0.104),
+		 LA(0.366),
+		 LASharp(0.057),
+		 TI(0.4);
 		 
 		 final Double MajorWeighting;
 		 majorProfile(Double MajorWeighting){
@@ -35,6 +37,7 @@ public class pitchHistogram {
 	 }
 	 public enum minorProfile{
 		 // from rnhart.net/articles/key-finding/
+		 
 		 DO(6.33),
 		 DOSharp(2.68),
 		 RE(3.52),
@@ -47,6 +50,7 @@ public class pitchHistogram {
 		 LA(2.69),
 		 LASharp(3.34),
 		 TI(3.17);
+		 
 		 
 		 final Double MinorWeighting;
 		 minorProfile(Double MinorWeighting){
