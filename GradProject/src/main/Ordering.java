@@ -17,8 +17,9 @@ public class Ordering {
 		}    
 		orderedList[0]=seedPiece;
 		orderedList[seedPiece]=0;
-        int currentSeed = 0; 
-		while (currentSeed < nrOfPieces -1 ){
+        if (nrOfPieces > 2) {
+		  int currentSeed = 0; 
+		  while (currentSeed < nrOfPieces -2 ){
 			greatestCorrelationValue = 0;
 			greatestCorrelationIndex = 0;
 			for(int i=currentSeed+1;i<nrOfPieces;i++){
@@ -33,11 +34,14 @@ public class Ordering {
                    greatestCorrelationIndex = i;
                 }   
 			}
-			int swap;
-			swap = orderedList[currentSeed +1];
-			orderedList[currentSeed+1]=orderedList[greatestCorrelationIndex];
-			orderedList[greatestCorrelationIndex]=swap;
+			if (greatestCorrelationIndex !=0) {
+				int swap;
+				swap = orderedList[currentSeed +1];
+				orderedList[currentSeed+1]=orderedList[greatestCorrelationIndex];
+				orderedList[greatestCorrelationIndex]=swap;
+			}
 			currentSeed++;
+		  }
 		}	
 		return orderedList;    
 	}
