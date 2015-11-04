@@ -1,6 +1,9 @@
 package main;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 =======
 >>>>>>> origin/master
 
