@@ -1,5 +1,8 @@
 package main;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 
 public class bpm {
 	final static double BEATTHRESHOLD = 1.35;

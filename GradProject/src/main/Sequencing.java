@@ -12,9 +12,9 @@ public class Sequencing {
 
 	}
 	private static  void selectGUI(){
-		JFrame frame = new JFrame ("music selection");
+		JFrame frame = new JFrame (" SMART SCHUFFLE");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    frame.setSize(300,250); 
+	    frame.setSize(500,300); 
 
 		//This will center the JFrame in the middle of the screen 
 		frame.setLocationRelativeTo(null);
