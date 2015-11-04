@@ -1,0 +1,28 @@
+package main;
+import java.io.IOException;
+
+import javax.sound.sampled.AudioInputStream;
+
+
+public class bpm {
+	final static double BEATTHRESHOLD = 1.35;
+		
+	public static double getBPM(int[][] samples,int channels,int frameLength,int frameSize,float sampleRate){
+
+		double Average = 0.0;
+		
+		// only doing for one channel for now
+		for(int i=0;i<frameLength; i++){
+			Average = Average + samples[0][i];
+		}
+		Average = Average/frameLength;
+		double absoluteAverage = Average;
+		double bpm = 0.0;
+		for(int j=0;j<60*sampleRate/1024;j = j+1024){// for 1 min of music
+			if(samples[0][j] > absoluteAverage*BEATTHRESHOLD){
+				bpm = bpm+1;
+			}
+		}
+		return bpm;
+	}
+}

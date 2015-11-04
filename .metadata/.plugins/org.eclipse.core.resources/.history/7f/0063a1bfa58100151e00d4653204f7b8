@@ -1,0 +1,38 @@
+package main;
+
+import java.io.File;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+
+import main.MusicKey.Mode;
+import main.MusicKey.Tonality;
+
+public class MusicPiece {
+	private static Tonality tonality;
+	private static Mode mode;
+	private static double bpm;
+	private static File file;
+	public MusicPiece(File f){
+		file = f;
+		AudioInputStream aio = AudioSystem.getAudioInputStream(f);
+		bpm = bpm.getbpm(aio);
+	}
+	
+	public Tonality getTonality(){
+		return tonality;
+	}
+	
+	public Mode getMode(){
+		return mode;
+	}
+	
+	public double getbpm(){
+		return bpm;
+	}
+	
+	public File getFile(){
+		return file;
+	}
+
+}

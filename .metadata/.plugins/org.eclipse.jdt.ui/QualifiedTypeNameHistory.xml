@@ -8,4 +8,11 @@
 <fullyQualifiedTypeName name="org.jtransforms.fft.DoubleFFT_1D"/>
 <fullyQualifiedTypeName name="org.jtransforms.fft.DoubleFFT_2D"/>
 <fullyQualifiedTypeName name="org.jtransforms.dht.DoubleDHT_1D"/>
+<fullyQualifiedTypeName name="main.fftBase"/>
+<fullyQualifiedTypeName name="main.NoteHistogram"/>
+<fullyQualifiedTypeName name="main.debugPrint"/>
+<fullyQualifiedTypeName name="main.MusicKey.Mode"/>
+<fullyQualifiedTypeName name="main.MusicKey.Tonality"/>
+<fullyQualifiedTypeName name="javax.sound.sampled.AudioInputStream"/>
+<fullyQualifiedTypeName name="javax.sound.sampled.AudioSystem"/>
 </qualifiedTypeNameHistroy>

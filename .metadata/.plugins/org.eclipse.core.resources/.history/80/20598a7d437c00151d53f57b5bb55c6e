@@ -1,7 +1,0 @@
-
-public class KeyCorrelation {
-	public double getcorrelation(MusicKey key1, MusicKey key2){
-		
-	}
-
-}
