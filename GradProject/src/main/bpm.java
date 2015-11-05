@@ -9,18 +9,18 @@ public class bpm {
 		double bpm = 0.0;
 		for(int k=0; k< channels; k++){
 			Average = 0.0;
-			for(int i=0;i<frameLength; i++){
+			for(int i=0;i<samples[k].length; i++){
 				Average = Average + samples[k][i];
 			}
-			Average = Average/frameLength;
-			double absoluteAverage = Average;
+			Average = Average/(samples[k].length);
 
-			for(int j=0;j<60*sampleRate/1024;j = j+1024){// for 1 min of music
-				if(samples[k][j] > absoluteAverage*BEATTHRESHOLD){
+			for(int j=0;j<samples[k].length;j = j+2){
+				if(samples[k][j] > Average*BEATTHRESHOLD){
 					bpm = bpm+1;
 				}
 			}
 		}
-		return bpm/channels; // because in the channels for loop i keep adding to the bpm of previous channel
+		double totalTime = samples[0].length/sampleRate*60;
+		return bpm/(totalTime*channels); // because in the channels for loop i keep adding to the bpm of previous channel
 	}
 }

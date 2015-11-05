@@ -116,149 +116,149 @@ public class pitchHistogram {
 						 // this comment is a redundant comment that this if statement is redundant for this case but not others
 						 processingArray[i][0] = HISTOGRAMVALUES[i];
 					 } else {
-						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(i-12)];
+						 processingArray[(i)][0] = HISTOGRAMVALUES[(i)];
 					 }
 				 }
 				 break;
 				 
 			 case A:
-				 int j = 0; // a counter
-				 for(int i = 1; i<13; i++){
-					 if(i<12){
+				 int j = 1; // a counter
+				 for(int i = 0; i<12; i++){
+					 if(j<12){
 						 processingArray[i][0] = HISTOGRAMVALUES[j];
 						 j++;
 					 } else {
-						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(j)];
+						 processingArray[(i)][0] = HISTOGRAMVALUES[(j-12)];
 						 j++;
 					 }
 				 }
 				 break;
 				 
 			 case ASHARP:
-				 int k = 0; // a counter
-				 for(int i = 2; i<14; i++){
-					 if(i<12){
+				 int k = 2; // a counter
+				 for(int i = 0; i<12; i++){
+					 if(k<12){
 						 processingArray[i][0] = HISTOGRAMVALUES[k];
 						 k++;
 					 } else {
-						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(k)];
+						 processingArray[(i)][0] = HISTOGRAMVALUES[(k-12)];
 						 k++;
 					 }
 				 }
 				 break;
 				 
 			 case B:
-				 int l = 0;
-				 for(int i = 3; i<15; i++){
-					 if(i<12){
+				 int l = 3;
+				 for(int i = 0; i<12; i++){
+					 if(l<12){
 						 processingArray[i][0] = HISTOGRAMVALUES[l];
 						 l++;
 					 } else {
-						 processingArray[(i-12)][0] = HISTOGRAMVALUES[l];
+						 processingArray[(i)][0] = HISTOGRAMVALUES[l-12];
 						 l++;
 					 }
 				 }
 				 break;
 				 
 			 case C:
-				 int m = 0; // a counter
-				 for(int i = 4; i<16; i++){
-					 if(i<12){
+				 int m = 4; // a counter
+				 for(int i = 0; i<12; i++){
+					 if(m<12){
 						 processingArray[i][0] = HISTOGRAMVALUES[m];
 						 m++;
 					 } else {
-						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(m)];
+						 processingArray[(i)][0] = HISTOGRAMVALUES[(m-12)];
 						 m++;
 					 }
 				 }
 				 break;
 				 
 			 case CSHARP:
-				 int n = 0; // a counter
-				 for(int i = 5; i<17; i++){
-					 if(i<12){
+				 int n = 5; // a counter
+				 for(int i = 0; i<12; i++){
+					 if(n<12){
 						 processingArray[i][0] = HISTOGRAMVALUES[n];
 						 n++;
 					 } else {
-						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(n)];
+						 processingArray[(i)][0] = HISTOGRAMVALUES[(n-12)];
 						 n++;
 					 }
 				 }
 				 break;
 				 
 			 case D:
-				 int o = 0; // a counter
-				 for(int i = 6; i<18; i++){
-					 if(i<12){
+				 int o = 6; // a counter
+				 for(int i = 0; i<12; i++){
+					 if(o<12){
 						 processingArray[i][0] = HISTOGRAMVALUES[o];
 						 o++;
 					 } else {
-						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(o)];
+						 processingArray[(i)][0] = HISTOGRAMVALUES[(o-12)];
 						 o++;
 					 }
 				 }
 				 break;
 				 
 			 case DSHARP:
-				 int p = 0; // a counter
-				 for(int i = 7; i<19; i++){
-					 if(i<12){
+				 int p = 7; // a counter
+				 for(int i = 0; i<12; i++){
+					 if(p<12){
 						 processingArray[i][0] = HISTOGRAMVALUES[p];
 						 p++;
 					 } else {
-						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(p)];
+						 processingArray[(i)][0] = HISTOGRAMVALUES[(p-12)];
 						 p++;
 					 }
 				 }
 				 break;
 				 
 			 case E:
-				 int q = 0; // a counter
-				 for(int i = 8; i<20; i++){
-					 if(i<12){
+				 int q = 8; // a counter
+				 for(int i = 0; i<12; i++){
+					 if(q<12){
 						 processingArray[i][0] = HISTOGRAMVALUES[q];
 						 q++;
 					 } else {
-						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(q)];
+						 processingArray[(i)][0] = HISTOGRAMVALUES[(q-12)];
 						 q++;
 					 }
 				 }
 				 break;
 				 
 			 case F:
-				 int r = 0; // a counter
-				 for(int i = 9; i<21; i++){
-					 if(i<12){
+				 int r = 9; // a counter
+				 for(int i = 0; i<12; i++){
+					 if(r<12){
 						 processingArray[i][0] = HISTOGRAMVALUES[r];
 						 r++;
 					 } else {
-						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(r)];
+						 processingArray[(i)][0] = HISTOGRAMVALUES[(r-12)];
 						 r++;
 					 }
 				 }
 				 break;
 				 
 			 case FSHARP:
-				 int s = 0; // a counter
-				 for(int i = 10; i<22; i++){
-					 if(i<12){
+				 int s = 10; // a counter
+				 for(int i = 0; i<12; i++){
+					 if(s<12){
 						 processingArray[i][0] = HISTOGRAMVALUES[s];
 						 s++;
 					 } else {
-						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(s)];
+						 processingArray[(i)][0] = HISTOGRAMVALUES[(s-12)];
 						 s++;
 					 }
 				 }
 				 break;
 				 
 			 case G:
-				 int t = 0; // a counter
-				 for(int i = 11; i<23; i++){
-					 if(i<12){
+				 int t = 11; // a counter
+				 for(int i = 0; i<12; i++){
+					 if(t<12){
 						 processingArray[i][0] = HISTOGRAMVALUES[t];
 						 t++;
 					 } else {
-						 processingArray[(i-12)][0] = HISTOGRAMVALUES[(t)];
+						 processingArray[(i)][0] = HISTOGRAMVALUES[(t-12)];
 						 t++;
 					 }
 				 }

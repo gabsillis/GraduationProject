@@ -12,7 +12,7 @@ public class Sequencing {
 
 	}
 	private static  void selectGUI(){
-		JFrame frame = new JFrame (" SMART SCHUFFLE");
+		JFrame frame = new JFrame (" SMART SHUFFLE");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    frame.setSize(500,300); 
 
